@@ -1,6 +1,7 @@
 'use strict';
 const rwdata = require('../util/rwdata.js');
 const dateFormatter = require('../util/dateformatter.js');
+const sorter = require('../util/sorter.js');
 
 function list() {
     let result = '';
@@ -9,7 +10,7 @@ function list() {
         result = `The list is empty`;
     } else {
         (json.notes).forEach((element, index) => {
-            result += `Note №${index + 1}\n Title: [${element.title}]\n Body : [${element.body}]\n`;
+            result += `Note №${index + 1}\n Title: [${element.title}]\n Body : [${element.body}]\n Date :[${element.date}]\n`;
         });
     }
     return result;
@@ -18,16 +19,16 @@ function list() {
 function read(title) {
     let result = `There isn\'t any notes with title: ${title}.`;
     const json = rwdata.reader()
-    if (json.notes.length===0){
+    if (json.notes.length === 0) {
         result = `The list is empty.`
     } else {
         (json.notes).forEach((element, index) => {
             if (element.title === title) {
-                result =  ` Title: [${element.title}]\n Body : [${element.body}]`;
+                result = ` Title: [${element.title}]\n Body : [${element.body}]`;
             }
         });
     }
-     return result;
+    return result;
 }
 
 function add(newTitle, newBody) {
@@ -37,7 +38,7 @@ function add(newTitle, newBody) {
             return `The note with title: [${newTitle}] has already existed in the list.`;
         }
     };
-    
+
     const data = {
         title: newTitle,
         body: newBody,
@@ -45,7 +46,7 @@ function add(newTitle, newBody) {
     };
     json.notes.push(data);
     const ind = rwdata.writer(JSON.stringify(json));
-    if (ind===true) {
+    if (ind === true) {
         return `New note with title: [${newTitle}] and body: [${newBody}] was successfully added to list.`;
     } else {
         return ind;
@@ -65,6 +66,18 @@ function remove(title) {
     return result;
 }
 
+function sort(kind, options) {
+    let json = rwdata.reader();
+    let result = '';
+    if (json.notes.length === 0) {
+        result = `The list is empty.`
+    } else {
+        result = '{"notes":' + JSON.stringify(sorter.sort(json.notes, kind, options)) + '}';
+        rwdata.writer(result);
+    }
+    return list();
+}
+
 function clear() {
     rwdata.writer('{"notes":[]}');
     return `The list is empty.`;
@@ -75,3 +88,4 @@ exports.remove = remove;
 exports.add = add;
 module.exports.read = read;
 exports.list = list;
+exports.sort = sort;
