@@ -1,5 +1,6 @@
 'use strict';
 const rwdata = require('../util/rwdata.js');
+const dateFormatter = require('../util/dateformatter.js');
 
 function list() {
     let result = '';
@@ -36,9 +37,11 @@ function add(newTitle, newBody) {
             return `The note with title: [${newTitle}] has already existed in the list.`;
         }
     };
+    
     const data = {
         title: newTitle,
-        body: newBody
+        body: newBody,
+        date: dateFormatter.getStringNewDate()
     };
     json.notes.push(data);
     const ind = rwdata.writer(JSON.stringify(json));
