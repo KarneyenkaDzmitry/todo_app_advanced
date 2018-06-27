@@ -20,7 +20,7 @@ const argv = require('yargs')
         yargs.options('t', { demand: true, desc: 'Title of a note' });
         yargs.options('b', { demand: true, desc: 'Body of a note' });
     }, function (argv) {
-        const result = notes.add(argv.title, argv.body);
+        const result = notes.add(argv.title, argv.body, false);
         console.log(result);
     })
     .command(['list', 'ls'], 'show all notes', (yargs) => { }, () => {
@@ -52,6 +52,13 @@ const argv = require('yargs')
         });
     }, (argv) => {
         const result = notes.sort(argv.kind, argv.options);
+        console.log(result);
+    })
+    .command(['update', 'u'], 'update an existing note or add new if it doesn\'t exist before', (yargs) => {
+        yargs.options('t', { demand: true, desc: 'Title of a note' });
+        yargs.options('b', { demand: true, desc: 'Body of a note' });
+    }, function (argv) {
+        const result = notes.add(argv.title, argv.body, true);
         console.log(result);
     })
     .argv;

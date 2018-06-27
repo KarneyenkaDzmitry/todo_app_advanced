@@ -31,14 +31,18 @@ function read(title) {
     return result;
 }
 
-function add(newTitle, newBody) {
+function add(newTitle, newBody, marker) {
     let json = rwdata.reader();
     for (let i = 0; i < json.notes.length; i++) {
         if (json.notes[i].title === newTitle) {
-            return `The note with title: [${newTitle}] has already existed in the list.`;
+            if (!marker) {
+                return `The note with title: [${newTitle}] has already existed in the list.`;
+            } else {
+                remove(newTitle);
+            }
         }
     };
-
+    json = rwdata.reader();
     const data = {
         title: newTitle,
         body: newBody,
@@ -47,7 +51,7 @@ function add(newTitle, newBody) {
     json.notes.push(data);
     const ind = rwdata.writer(JSON.stringify(json));
     if (ind === true) {
-        return `New note with title: [${newTitle}] and body: [${newBody}] was successfully added to list.`;
+        return `New note with title: [${newTitle}] and body: [${newBody}] was successfully added or updated to list.`;
     } else {
         return ind;
     }
