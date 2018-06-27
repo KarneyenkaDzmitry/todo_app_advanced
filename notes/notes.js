@@ -1,9 +1,9 @@
 'use strict';
-const obj = require('../util/rwdata.js');
+const rwdata = require('../util/rwdata.js');
 
 function list() {
     let result = '';
-    const json = obj.reader();
+    const json = rwdata.reader();
     if (json.notes.length === 0) {
         result = `The list is empty`;
     } else {
@@ -16,7 +16,7 @@ function list() {
 
 function read(title) {
     let result = `There isn\'t any notes with title: ${title}.`;
-    const json = obj.reader()
+    const json = rwdata.reader()
     if (json.notes.length===0){
         result = `The list is empty.`
     } else {
@@ -30,7 +30,7 @@ function read(title) {
 }
 
 function add(newTitle, newBody) {
-    let json = obj.reader();
+    let json = rwdata.reader();
     for (let i = 0; i < json.notes.length; i++) {
         if (json.notes[i].title === newTitle) {
             return `The note with title: [${newTitle}] has already existed in the list.`;
@@ -41,7 +41,7 @@ function add(newTitle, newBody) {
         body: newBody
     };
     json.notes.push(data);
-    const ind = obj.writer(JSON.stringify(json));
+    const ind = rwdata.writer(JSON.stringify(json));
     if (ind===true) {
         return `New note with title: [${newTitle}] and body: [${newBody}] was successfully added to list.`;
     } else {
@@ -50,12 +50,12 @@ function add(newTitle, newBody) {
 }
 
 function remove(title) {
-    let json = obj.reader();
+    let json = rwdata.reader();
     let result = `There isn\'t a note with title ${title}`;
     (json.notes).forEach((element, index) => {
         if (element.title === title) {
             json.notes.splice(index, 1);
-            obj.writer(JSON.stringify(json));
+            rwdata.writer(JSON.stringify(json));
             result = `The note \n Title: ${element.title}\n Body :${element.body}\n was successfully deleted.`;
         }
     });
@@ -63,9 +63,10 @@ function remove(title) {
 }
 
 function clear() {
-    obj.writer('{"notes":[]}');
+    rwdata.writer('{"notes":[]}');
     return `The list is empty.`;
 }
+
 exports.clear = clear;
 exports.remove = remove;
 exports.add = add;
