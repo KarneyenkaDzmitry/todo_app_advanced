@@ -3,7 +3,7 @@ const rwdata = require('../util/rwdata.js');
 const dateFormatter = require('../util/dateformatter.js');
 const sorter = require('../util/sorter.js');
 class Notes {
-    constructor(){}
+    constructor() { }
     list() {
         let result = '';
         const json = rwdata.reader();
@@ -32,7 +32,7 @@ class Notes {
         return result;
     }
 
-    add(newTitle, newBody, marker) {
+    add(newTitle, newBody, marker, date) {
         let json = rwdata.reader();
         for (let i = 0; i < json.notes.length; i++) {
             if (json.notes[i].title === newTitle) {
@@ -44,10 +44,16 @@ class Notes {
             }
         };
         json = rwdata.reader();
+        let createDate;
+        if (typeof(date)==='string') {
+            createDate = date;
+        } else {
+            createDate = dateFormatter.getStringNewDate();
+        }
         const data = {
             title: newTitle,
             body: newBody,
-            date: dateFormatter.getStringNewDate()
+            date: createDate
         };
         json.notes.push(data);
         const ind = rwdata.writer(JSON.stringify(json));
@@ -86,6 +92,33 @@ class Notes {
     clear() {
         rwdata.writer('{"notes":[]}');
         return `The list is empty.`;
+    }
+
+    readFromExel(path) {
+        let dataFromExel = (rwdata.readerFromExel(path)).split(/\r\n/);
+        let result = '[';
+        const keys = dataFromExel[0].split(/\t/);
+        dataFromExel.splice(0, 1); dataFromExel.splice(dataFromExel.length - 1, 1);
+        dataFromExel.forEach(element => {
+            const mass = element.split(/\t/);
+            result += `{\"${keys[0]}\": \"${mass[0]}\", \"${keys[1]}\": \"${mass[1]}\", \"${keys[2]}\": \"${mass[2]}\"},`;
+        });
+        result = result.substring(0, result.length - 1) + ']';
+        const json = JSON.parse(result);
+        json.forEach(element => {
+            this.add(element.title, element.body, false, element.date);
+        });
+    }
+    writeToExel(path) {
+        try {
+            const json = rwdata.reader();
+            let data = `title\tbody\tdate\n`;
+            json.notes.forEach((element, index) => {
+                data += `${element.title}\t${element.body}\t${element.date}\n`
+            })
+            rwdata.writerExel(path, data.slice(0, -1));
+            return "Notes were successfully exported."
+        } catch (err) { return err; }
     }
 }
 module.exports = new Notes();

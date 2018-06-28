@@ -18,5 +18,19 @@ function writer(data) {
         return error;
     }
 }
+
+function writerExel(path, data) {
+    fs.writeFileSync(path, data, 'utf8');
+};
+
+function readerFromExel(path) {
+    return fs.readFileSync(path, 'utf8');
+}
+
+function appender(string) {
+
+}
+exports.readerFromExel = readerFromExel;
+exports.writerExel = writerExel;
 exports.reader = reader;
 exports.writer = writer;

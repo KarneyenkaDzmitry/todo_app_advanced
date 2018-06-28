@@ -1,5 +1,5 @@
 'use strict';
-
+function main(){
 const notes = require('./notes/notes.js');
 const argv = require('yargs')
     .usage('Usage: $0 <cmd> --title [string] --body [string]')
@@ -13,6 +13,7 @@ const argv = require('yargs')
     .describe('k', 'kind of sort. Can be [note length, nlength, nl], [title length, tlength, tl], [title alphabet, tl], [date, d]')
     .alias('options', 'o').nargs('o', 1)
     .describe('o', 'Options of sort.\nValid options: descending or [<](default), ascending or [>]')
+    .alias('file', 'f').nargs('f', 1).describe('Path to file')
     .help('h').alias('h', 'help')
     .epilog('Created by Dzmitry Karneyenka')
     .demandCommand(1, 'You need enter one command before moving on')
@@ -61,5 +62,18 @@ const argv = require('yargs')
         const result = notes.add(argv.title, argv.body, true);
         console.log(result);
     })
+    .command(['readExel', 'rex'], 'Read notes from Exel file', (yargs) => { 
+        yargs.options('f', {demant: true, description: 'path to Exel-file'});
+    }, (argv) => {
+        const result = notes.readFromExel(argv.file);
+        console.log(result);
+    })
+    .command(['writeExel', 'wex'], 'Write notes to Exel file', (yargs) => { 
+        yargs.options('f', {demant: true, description: 'path to file'});
+    }, (argv) => {
+        const result = notes.writeToExel(argv.file);
+        console.log(result);
+    })
     .argv;
-
+}
+main();
