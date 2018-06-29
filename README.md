@@ -6,34 +6,34 @@
 Command Line Arguments
 ----------------------
 
-##Help: 
+##Help:<br> 
   node index.js --help.
 
-##Usage:
-  index.js <cmd> --title [string] --body [string]
-  index.js sort --kind [string] --options [string]
-  index.js <cmd> --file [path to file.xlsx]
+##Usage:<br>
+  index.js <cmd> --title [string] --body [string]<br>
+  index.js sort --kind [string] --options [string]<br>
+  index.js <cmd> --file [path to file.xlsx]<br>
 
-##Commands:
-  index.js add        add a new note                                [aliases: a]
-  index.js list       show all notes                               [aliases: ls]
-  index.js remove     remove a note by title                       [aliases: rm]
-  index.js read       read a note by title                          [aliases: r]
-  index.js clear      show all notes                              [aliases: clr]
-  index.js sort       sort list of notes                            [aliases: s]
+##Commands:<br>
+  index.js add        add a new note                                [aliases: a]<br>
+  index.js list       show all notes                               [aliases: ls]<br>
+  index.js remove     remove a note by title                       [aliases: rm]<br>
+  index.js read       read a note by title                          [aliases: r]<br>
+  index.js clear      show all notes                              [aliases: clr]<br>
+  index.js sort       sort list of notes                            [aliases: s]<br>
   index.js update     update an existing note or add new if it doesn't exist
-                      before                                        [aliases: u]
-  index.js readExel   Read notes from Exel file                   [aliases: rex]
-  index.js writeExel  Write notes to Exel file                    [aliases: wex]
+                      before                                        [aliases: u]<br>
+  index.js readExel   Read notes from Exel file                   [aliases: rex]<br>
+  index.js writeExel  Write notes to Exel file                    [aliases: wex]<br>
 
-##Options:
-  --version       Show version number                                  [boolean]
-  -t, --title     Title of a note
-  -b, --body      Body of a note
-  --Path to file
-  -h, --help      Show help                                            [boolean]
-  --kind, -k      kind of sort. Can be [note length, nlength, nl], [title
-                  length, tlength, tl], [title alphabet, tl], [date, d]
+##Options:<br>
+  --version       Show version number                                  [boolean]<br>
+  -t, --title     Title of a note<br>
+  -b, --body      Body of a note<br>
+  --Path to file<br>
+  -h, --help      Show help                                            [boolean]<br>
+  --kind, -k      kind of sort. Can be [note length, nlength, nl], [title<br>
+                  length, tlength, tl], [title alphabet, tl], [date, d]<br>
   --options, -o   Options of sort.
                   Valid options: descending or [<](default), ascending or [>]
 
