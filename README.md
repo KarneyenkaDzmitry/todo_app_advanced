@@ -1,9 +1,15 @@
 # todo_app_advanced
+
 [AT Lab#19] 
+
+----------------------
+Command Line Arguments
+----------------------
 
 ##Help: node index.js --help.
 
 ##Usage:
+
   index.js <cmd> --title [string] --body [string]
   index.js sort --kind [string] --options [string]
   index.js <cmd> --file [path to file.xlsx]
