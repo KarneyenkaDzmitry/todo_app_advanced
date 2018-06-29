@@ -6,8 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 
 #data file list.json from folder data
-*.xlsx
-*.json
+resources/*.xlsx
+resources/*.json
 
 
 # Runtime data
