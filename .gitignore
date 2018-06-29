@@ -6,7 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 
 #data file list.json from folder data
-data/list.json
+*.xlsx
+*.json
+
 
 # Runtime data
 pids
