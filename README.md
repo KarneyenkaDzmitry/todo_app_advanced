@@ -1,12 +1,14 @@
 # todo_app_advanced
 [AT Lab#19] 
-Help: node index.js --help.
 
-Usage: index.js <cmd> --title [string] --body [string]
-Usage: index.js sort --kind [string] --options [string]
-Usage: index.js <cmd> --file [path to file.xlsx]
+##Help: node index.js --help.
 
-Commands:
+##Usage:
+  index.js <cmd> --title [string] --body [string]
+  index.js sort --kind [string] --options [string]
+  index.js <cmd> --file [path to file.xlsx]
+
+##Commands:
   index.js add        add a new note                                [aliases: a]
   index.js list       show all notes                               [aliases: ls]
   index.js remove     remove a note by title                       [aliases: rm]
@@ -18,7 +20,7 @@ Commands:
   index.js readExel   Read notes from Exel file                   [aliases: rex]
   index.js writeExel  Write notes to Exel file                    [aliases: wex]
 
-Options:
+##Options:
   --version       Show version number                                  [boolean]
   -t, --title     Title of a note
   -b, --body      Body of a note
@@ -29,7 +31,7 @@ Options:
   --options, -o   Options of sort.
                   Valid options: descending or [<](default), ascending or [>]
 
-Examples:
+##Examples:
   node notes.js add --title 'title add new' --body 'body add new'
   node notes.js add -t 'title add new' -b 'body add new'
   node notes.js <cmd> --title='Title of a note' --body='Body of a note'
@@ -37,4 +39,4 @@ Examples:
   node index.js readExel --file ./resources/notes.xlsx
   node index.js writeExel --file ./resources/notes.xlsx
 
-Created by Dzmitry Karneyenka
+###Created by Dzmitry Karneyenka
