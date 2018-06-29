@@ -26,10 +26,6 @@ function writerExel(path, data) {
 function readerFromExel(path) {
     return fs.readFileSync(path, 'utf8');
 }
-
-function appender(string) {
-
-}
 exports.readerFromExel = readerFromExel;
 exports.writerExel = writerExel;
 exports.reader = reader;
