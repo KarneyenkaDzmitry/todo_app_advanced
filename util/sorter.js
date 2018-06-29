@@ -11,7 +11,7 @@ function descendingSort(array, kind) {
         case 'title length': case 'tlength': case 'tl':
             return array.sort((a, b) => (b.title.length - a.title.length));
         case 'title alphabet': case 'talph': case 'ta':
-            return array.sort();
+            return array.sort((a, b) => b.title < a.title);
     }
 }
 function ascendingSort(array, kind) {
@@ -24,8 +24,7 @@ function ascendingSort(array, kind) {
         case 'title length': case 'tlength': case 'tl':
             return array.sort((a, b) => (a.title.length - b.title.length));
         case 'title alphabet': case 'talph': case 'ta':
-            array.sort();
-            return array.reverse();
+            return array.sort((a, b) => b.title > a.title);
     }
 }
 

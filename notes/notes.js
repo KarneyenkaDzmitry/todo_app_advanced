@@ -123,9 +123,9 @@ class Notes {
         });
         workbook.write(path, err => {
             if (err) {
-                return err;
+                console.log(err);
             } else {
-                return 'excel file with all notes was created successfuly.';
+                console.log('excel file with all notes was created successfuly.');
             }
         });
     }

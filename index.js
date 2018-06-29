@@ -16,7 +16,8 @@ const argv = require('yargs')
     .alias('kind', 'k').nargs('k', 1)
     .describe('k', 'kind of sort. Can be [note length, nlength, nl], [title length, tlength, tl], [title alphabet, tl], [date, d]')
     .alias('options', 'o').nargs('o', 1)
-    .describe('o', 'Options of sort.\nValid options: descending or [<](default), ascending or [>]')
+    .describe('o', 'Options of sort.\nValid options: [(descending, des, d, [<]](default)'+
+     '[ascending,asc, a [>]]')
     .alias('file', 'f').nargs('f', 1).describe('f', 'Path to file')
     .help('h').alias('h', 'help')
     .epilog('Created by Dzmitry Karneyenka')
@@ -75,8 +76,7 @@ const argv = require('yargs')
     .command(['writeExel', 'wex'], 'Write notes to Exel file', (yargs) => { 
         yargs.options('f', {demant: true, description: 'path to file'});
     }, (argv) => {
-        const result = notes.writeToExel(argv.file);
-        console.log(result);
+        notes.writeToExel(argv.file);
     })
     .argv;
 }
