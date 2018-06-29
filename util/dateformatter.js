@@ -8,10 +8,9 @@ function getStringDate(date) {
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 }
 function getInstanceDate(stringDate) {
-    let mass = stringDate.split(/\s/);
-    let mass1 = mass[0].split('/');
-    let result = `${mass1[1]}/${mass1[0]}/${mass1[2]} ${mass[1]}`;
-    return new Date(result);
+    let array = stringDate.split(/\s/);
+    let array1 = array[0].split('/');
+    return new Date(`${array1[1]}/${array1[0]}/${array1[2]} ${array[1]}`);
 }
 exports.getStringNewDate = getStringNewDate;
 exports.getInstanceDate = getInstanceDate;

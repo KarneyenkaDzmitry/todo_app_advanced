@@ -4,6 +4,7 @@ const list = './data/list.json';
 
 function reader() {
     try {
+        fs.existsSync(list) ? '' : fs.writeFileSync(list, '{"notes":[]}', 'utf8');
         return JSON.parse(fs.readFileSync(list, 'utf8'));
     } catch (error) {
         return error;

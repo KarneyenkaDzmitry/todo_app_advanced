@@ -5,6 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+#data file list.json from folder data
+./data/list.json
+
 # Runtime data
 pids
 *.pid

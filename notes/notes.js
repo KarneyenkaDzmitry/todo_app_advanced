@@ -3,7 +3,6 @@ const rwdata = require('../util/rwdata.js');
 const dateFormatter = require('../util/dateformatter.js');
 const sorter = require('../util/sorter.js');
 class Notes {
-    constructor() { }
     list() {
         let result = '';
         const json = rwdata.reader();
