@@ -4,6 +4,8 @@
   "description": "includes new features: sort, date, write to exel, read from exel, update existing note",
   "main": "index.js",
   "dependencies": {
+    "excel4node": "^1.3.6",
+    "xlsx": "^0.13.1",
     "yargs": "^11.0.0"
   },
   "devDependencies": {},

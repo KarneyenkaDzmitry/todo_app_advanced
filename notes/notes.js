@@ -2,6 +2,9 @@
 const rwdata = require('../util/rwdata.js');
 const dateFormatter = require('../util/dateformatter.js');
 const sorter = require('../util/sorter.js');
+const excel4node = require('excel4node');
+const xlsx = require('xlsx');
+
 class Notes {
     list() {
         let result = '';
@@ -22,7 +25,7 @@ class Notes {
         if (json.notes.length === 0) {
             result = `The list is empty.`
         } else {
-            (json.notes).forEach((element, index) => {
+            (json.notes).forEach(element => {
                 if (element.title === title) {
                     result = ` Title: [${element.title}]\n Body : [${element.body}]`;
                 }
@@ -33,8 +36,8 @@ class Notes {
 
     add(newTitle, newBody, marker, date) {
         let json = rwdata.reader();
-        for (let i = 0; i < json.notes.length; i++) {
-            if (json.notes[i].title === newTitle) {
+        for (let index = 0; index < json.notes.length; index++) {
+            if (json.notes[index].title === newTitle) {
                 if (!marker) {
                     return `The note with title: [${newTitle}] has already existed in the list.`;
                 } else {
@@ -44,7 +47,7 @@ class Notes {
         };
         json = rwdata.reader();
         let createDate;
-        if (typeof(date)==='string') {
+        if (typeof (date) === 'string') {
             createDate = date;
         } else {
             createDate = dateFormatter.getStringNewDate();
@@ -92,32 +95,39 @@ class Notes {
         rwdata.writer('{"notes":[]}');
         return `The list is empty.`;
     }
-
     readFromExel(path) {
-        let dataFromExel = (rwdata.readerFromExel(path)).split(/\r\n/);
-        let result = '[';
-        const keys = dataFromExel[0].split(/\t/);
-        dataFromExel.splice(0, 1); dataFromExel.splice(dataFromExel.length - 1, 1);
-        dataFromExel.forEach(element => {
-            const mass = element.split(/\t/);
-            result += `{\"${keys[0]}\": \"${mass[0]}\", \"${keys[1]}\": \"${mass[1]}\", \"${keys[2]}\": \"${mass[2]}\"},`;
-        });
-        result = result.substring(0, result.length - 1) + ']';
-        const json = JSON.parse(result);
-        json.forEach(element => {
+        const workbook = xlsx.readFile(path);
+        const array = workbook.Sheets.Sheet1;
+        xlsx.utils.sheet_to_json(array).forEach(element => {
             this.add(element.title, element.body, false, element.date);
         });
+        return
     }
+
     writeToExel(path) {
-        try {
-            const json = rwdata.reader();
-            let data = `title\tbody\tdate\n`;
-            json.notes.forEach((element, index) => {
-                data += `${element.title}\t${element.body}\t${element.date}\n`
-            })
-            rwdata.writerExel(path, data.slice(0, -1));
-            return "Notes were successfully exported."
-        } catch (err) { return err; }
+        const workbook = new excel4node.Workbook();
+        const worksheet = workbook.addWorksheet('Sheet1');
+        var style = workbook.createStyle({
+            font: {
+                color: '#FF0800',
+                size: 16
+            },
+        });
+        worksheet.cell(1, 1).string('title').style(style);
+        worksheet.cell(1, 2).string('body').style(style);
+        worksheet.cell(1, 3).string('date').style(style);
+        rwdata.reader().notes.forEach((element, index) => {
+            worksheet.cell(index + 2, 1).string(element.title.toString());
+            worksheet.cell(index + 2, 2).string(element.body.toString());
+            worksheet.cell(index + 2, 3).string(element.date);
+        });
+        workbook.write(path, err => {
+            if (err) {
+                return err;
+            } else {
+                return 'excel file with all notes was created successfuly.';
+            }
+        });
     }
 }
 module.exports = new Notes();
