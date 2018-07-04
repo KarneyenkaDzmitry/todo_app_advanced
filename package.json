@@ -1,6 +1,6 @@
 {
   "name": "todo_app_advanced",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "includes new features: sort, date, write to exel, read from exel, update existing note",
   "main": "index.js",
   "dependencies": {
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/KarneyenkaDzmitry/todo_app_advanced.git"
   },
   "keywords": [
-    "note"
+    "note", "todo", "list", "notes"
   ],
   "author": "Dzmitry_Karneyenka",
   "license": "ISC",
