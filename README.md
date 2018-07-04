@@ -26,14 +26,17 @@ There is a list of modules and their versions:
 ## Usage
 
 #### Available commands:
-- [Help](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#help-message-with-hints-about-usage-the-programm)
-- [Add a new note](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#add-a-new-note)
-- [Remove a note](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#remove-a-note)
-- [Read a note](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#read-a-note)
-- [Show list of all notes](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#show-list-of-all-notes)
-- [Clear list of notes](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#clear-list-of-notes)
-- [Update a note by title](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#update-a-note-by-title)
-- [Sort list of notes](https://github.com/KarneyenkaDzmitry/JavaScript_Module1/tree/master/#sort-list-of-notes)
+- [Help](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#help-message-with-hints-about-usage-the-programm)
+- [Add a new note](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#add-a-new-note)
+- [Remove a note](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#remove-a-note)
+- [Read a note](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#read-a-note)
+- [Show list of all notes](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#show-list-of-all-notes)
+- [Clear list of notes](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#clear-list-of-notes)
+- [Update a note by title](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#update-a-note-by-title)
+- [Sort list of notes](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#sort-list-of-notes)
+#### Advanced usage:
+- [Write all notes to excel file](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#write-all-notes-to-excel-file)
+- [Read notes from excel file and add them into todo_app's list](https://github.com/KarneyenkaDzmitry/todo_app_advanced/tree/master/#read-notes-from-excel-file-and-add-them-into-todo_app's-list)
 
 ### help message with hints about usage the programm
 
