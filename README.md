@@ -1,4 +1,4 @@
-# todo_app_advanced
+# todo_app_advanced version 1.1.0 ([AT Lab#19])
 
 The application helps to make a todo list with notes.<br>
 A note includes title and a body with description of the note.<br>
@@ -107,7 +107,10 @@ Write excel.xlsx file with all notes from todo_app_advanced list.
 Read all notes from excel file and add them into todo_app_advanced list.<br>
 If there is a note with the same title in the list, the application ignores it.
 
-[AT Lab#19] 
+### Author
+#### Dzmitry_Karneyenka, Republic of Belarus, Minsk
+
+ #### Examples of usage
 
 ----------------------
 Command Line Arguments
