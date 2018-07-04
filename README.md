@@ -110,8 +110,8 @@ If there is a note with the same title in the list, the application ignores it.
 ### Author
 #### Dzmitry_Karneyenka, Republic of Belarus, Minsk
 
- #### Examples of usage
 
+ ## Examples of usage
 ----------------------
 Command Line Arguments
 ----------------------
