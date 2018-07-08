@@ -101,7 +101,6 @@ class Notes {
         xlsx.utils.sheet_to_json(array).forEach(element => {
             this.add(element.title, element.body, false, element.date);
         });
-        return
     }
 
     writeToExel(path) {

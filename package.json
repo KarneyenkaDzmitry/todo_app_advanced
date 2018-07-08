@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "mkdir resources data && echo The directory keep list of notes> ./data/info.txt && echo The directory exist for different resourse files the programm> ."
+    "postinstall": "mkdir resources data && echo The directory keep list of notes> ./data/info.txt && echo The directory exist for different resourse files the programm> ./resources/info.txt"
   },
   "repository": {
     "type": "git",
